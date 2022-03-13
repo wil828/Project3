@@ -10,6 +10,7 @@ function ClimbingEntry(props) {
                 <FontAwesomeIcon icon={faTimes} />
             </button>
             <h2>My Climbing Results</h2>
+            <p>Type of Climb = {props.chosenTypeOfClimb}</p>
             <p>Finish = {props.chosenFinish}</p>
             <p>Grade = {props.chosenGrade}</p>
             

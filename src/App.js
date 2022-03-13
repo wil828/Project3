@@ -43,20 +43,21 @@ function App() {
   // console.log(climbingLog["name"]["finish"])
   console.log(climbingLog)
 
-  const storeClimbData = function(event, chosenClimbingGrade, chosenClimbingFinish) {
+  const storeClimbData = function(event, chosenTypeOfClimb, chosenClimbingGrade, chosenClimbingFinish) {
     event.preventDefault();
-    setClimbingGrade(chosenClimbingGrade);
-    setClimbingFinish(chosenClimbingFinish);
+    // setClimbingGrade(chosenClimbingGrade);
+    // setClimbingFinish(chosenClimbingFinish);
     const database = getDatabase(firebase);
     const dbRef = ref(database);
 
     const climbingList = {
+      type: chosenTypeOfClimb,
       grade: chosenClimbingGrade,
       finish: chosenClimbingFinish
     }
     push(dbRef, climbingList);
   }
-  // console.log(storeClimbData);
+  console.log(storeClimbData);
 
   const handleRemove = (ClimbingEntryId) => {
     const database = getDatabase(firebase);
@@ -77,6 +78,7 @@ function App() {
             return (
               <ClimbingEntry 
                 key = {oneClimb.key}
+                chosenTypeOfClimb = {oneClimb.name.type}
                 chosenGrade = {oneClimb.name.grade}
                 chosenFinish={oneClimb.name.finish}
 
