@@ -9,6 +9,7 @@ function ClimbingEntry(props) {
             <button onClick={props.removeEntry}>
                 <FontAwesomeIcon icon={faTimes} />
             </button>
+            <p>Date: {props.chosenDate}</p>
             <h2>My Climbing Results</h2>
             <p>Type of Climb = {props.chosenTypeOfClimb}</p>
             <p>Finish = {props.chosenFinish}</p>

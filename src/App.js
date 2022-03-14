@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 // importing ClimbingForm
 import ClimbingForm from './ClimbingForm';
 import ClimbingEntry from './ClimbingEntry';
+import ErrorShow from './ErrorShow';
 
 // access our database, import the corresponding firebase modules
 import { getDatabase, ref, onValue, push, remove } from 'firebase/database';
@@ -13,8 +14,7 @@ import { getDatabase, ref, onValue, push, remove } from 'firebase/database';
 
 function App() {
   const [ climbingLog, setClimbingLog ] = useState([]);
-  const [ climbingGrade, setClimbingGrade ] = useState('');
-  const [ climbingFinish, setClimbingFinish ] = useState('');
+  const [noInfo, setNoInfo] = useState(false);
 
   useEffect(() => {
     const database = getDatabase(firebase);
@@ -33,8 +33,6 @@ function App() {
           }
         );
       }
-      // console.log(newState[newState.length - 1]);
-      // setClimbingLog(newState[newState.length - 1]);
       setClimbingLog(newState);
     });
   }, []);
@@ -43,28 +41,43 @@ function App() {
   // console.log(climbingLog["name"]["finish"])
   console.log(climbingLog)
 
-  const storeClimbData = function(event, chosenTypeOfClimb, chosenClimbingGrade, chosenClimbingFinish) {
+  const storeClimbData = function(event, chosenDate, chosenTypeOfClimb, chosenClimbingGrade, chosenClimbingFinish) {
     event.preventDefault();
-    // setClimbingGrade(chosenClimbingGrade);
-    // setClimbingFinish(chosenClimbingFinish);
     const database = getDatabase(firebase);
     const dbRef = ref(database);
 
+    // validation for input toi check if data has been entered in
+
+    
+    
     const climbingList = {
+      date: chosenDate,
       type: chosenTypeOfClimb,
       grade: chosenClimbingGrade,
       finish: chosenClimbingFinish
     }
-    push(dbRef, climbingList);
+
+    // if statement to only push if all selects are full
+    if ((chosenDate == "") || (chosenTypeOfClimb == "placeholder") || (chosenClimbingGrade == "placeholder") || (chosenClimbingFinish == "placeholder")) {
+
+      setNoInfo(true);
+      console.log(noInfo);
+
+    } else {
+      push(dbRef, climbingList);
+    }
   }
-  console.log(storeClimbData);
 
   const handleRemove = (ClimbingEntryId) => {
     const database = getDatabase(firebase);
-    const dbRef = ref(database, `/${ClimbingEntryId
-}`);
+    const dbRef = ref(database, `/${ClimbingEntryId}`);
     remove(dbRef);
   }
+
+  // // validation input to check if data has been entered in
+  // const validate = () => {
+  //   console.log(this.state)
+  // }
 
   return (
     <div>
@@ -72,12 +85,20 @@ function App() {
         <h1>Climbing Tracker!</h1>
       </header>
       <ClimbingForm submitClimbingForm={storeClimbData}/>
+      {
+        noInfo === true
+          ?
+          <ErrorShow
+          />
+          : null
+      }
       <ul>
         { 
           climbingLog.map((oneClimb) => {
             return (
               <ClimbingEntry 
                 key = {oneClimb.key}
+                chosenDate = {oneClimb.name.date}
                 chosenTypeOfClimb = {oneClimb.name.type}
                 chosenGrade = {oneClimb.name.grade}
                 chosenFinish={oneClimb.name.finish}
