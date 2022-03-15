@@ -1,8 +1,10 @@
-import './App.css';
+import './App.scss';
 
 import firebase from './firebase';
 import { useState, useEffect } from 'react';
 
+// import the Header
+import Header from './Header';
 // importing ClimbingForm
 import ClimbingForm from './ClimbingForm';
 import ClimbingEntry from './ClimbingEntry';
@@ -64,6 +66,7 @@ function App() {
       console.log(noInfo);
 
     } else {
+      setNoInfo(false);
       push(dbRef, climbingList);
     }
   }
@@ -74,17 +77,14 @@ function App() {
     remove(dbRef);
   }
 
-  // // validation input to check if data has been entered in
-  // const validate = () => {
-  //   console.log(this.state)
-  // }
-
   return (
     <div>
-      <header>
-        <h1>Climbing Tracker!</h1>
-      </header>
-      <ClimbingForm submitClimbingForm={storeClimbData}/>
+      <Header />
+      <section className="climbFormSection">
+        <div className="wrapper">
+          <ClimbingForm submitClimbingForm={storeClimbData}/>
+        </div>
+      </section>
       {
         noInfo === true
           ?

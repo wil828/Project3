@@ -1,0 +1,61 @@
+// styling of climbingForm Section
+.climbFormSection {
+    margin-bottom: 20px;
+    .climbingForm {
+        h2 {
+            margin-bottom: 15px;
+        }
+        .dateArea {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: $quaternary;
+            padding: 10px;
+            border-radius: 15px;
+            label {
+                display: flex;
+                align-items: center;
+            }
+            input {
+                background-color: $quaternary;
+            }
+        }
+
+        .selectionArea {
+            margin: 10px 0 20px 0;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+
+            .climbSelection {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                background-color: $quaternary;
+                border-radius: 15px;
+            }
+        }
+
+        button {
+            background-color: $tertiary;
+            color: white;
+            font-weight: bold;
+            width: 100%;
+            padding: 10px;
+            border-radius: 20px;
+        }
+    }
+}
+
+// Error Sign Styling
+.errorSign {
+    margin: 20px 0;
+    text-align: center;
+    p {
+        font-weight: bold;
+        color: $quinary;
+    }
+}

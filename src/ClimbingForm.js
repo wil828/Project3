@@ -48,70 +48,64 @@ function ClimbingForm( props ) {
     return (
         <div className="climbingForm">
             <form action="" onSubmit={ handleUserSelect } >
-                <h2>Want to Log a Climb?</h2>
-                <label htmlFor='date' className='date'>
-                    Date:
-                </label>
-                <input 
-                    type='date' 
-                    name='date' 
-                    // when a new option is selected, fire the dateChange
-                    onChange={dateChange}
-                    value={dateValue}
-                />
-                <div className="typeOfClimbingFinish">
-                    <label htmlFor='typeOfClimb'>Type of Climb</label>
-                    <select
-                        id="typeOfClimb"
-                        name="typeOfClimb"
-                        // when a new option is selected, fire the climbingGradeValueChange
-                        onChange={typeOfClimbValueChange}
-                        // set a value of climbingFinish for the state value
-                        value={typeOfClimbValue}
-                    >
-                        <option value="placeholder" disabled>What type of Climb?</option>
-                        <option value="Top Rope">Top Rope</option>
-                        <option value="Boulder">Boulder</option>
-                        <option value="Trad">Trad</option>
-                        <option value="Lead">Lead</option>
-                    </select>
+                <h2>Log a Climb!</h2>
+                <div className="dateArea">
+                    <label htmlFor='date' className='date'>
+                        Date: 
+                    </label>
+                    <input 
+                        type='date' 
+                        name='date' 
+                        // when a new option is selected, fire the dateChange
+                        onChange={dateChange}
+                        value={dateValue}
+                    />
                 </div>
-                <div className="climbingGradeContainer">
-                    <label htmlFor='climbingGrade'>Climbing Grade</label>
-                    <select
-                        id="climbingGrade"
-                        name="climbingGrade"
-                        // when a new option is selected, fire the climbingGradeValueChange
-                        onChange={ climbingGradeValueChange }
-                        // set a value of climbingGrade for the state value
-                        value={ climbingGradeValue }
-                    >
-                        <option value="placeholder" disabled>Select the Grade:</option>
-                            {/* adding turnery operators for changing the option of climbing Grade  */}
-                            {
-                                typeOfClimbValue === "Top Rope" ?       
-                                climbingTopRope.map((climbNumber, index) => {
-                                    return (
-                                        <ClimbingFormGrade
-                                            chosenGradeClimb = {climbNumber}
-                                            key = {index}
-                                        />
-                                        
-                                    )
-                                })
-                                
-                                : typeOfClimbValue === "Boulder" ?
-                                climbingBoulder.map((climbNumber, index) => {
-                                    return (
-                                        <ClimbingFormGrade
-                                            chosenGradeClimb={climbNumber}
-                                            key={index}
-                                        />
 
-                                    )
-                                })
-                                : typeOfClimbValue === "Trad" ?
-                                        climbingTopRope.map((climbNumber, index) => {
+                <div className="selectionArea climbSelection">
+                    <div className="typeOfClimbingFinish climbSelection">
+                        <label htmlFor='typeOfClimb'>Type of Climb</label>
+                        <select
+                            id="typeOfClimb"
+                            name="typeOfClimb"
+                            // when a new option is selected, fire the climbingGradeValueChange
+                            onChange={typeOfClimbValueChange}
+                            // set a value of climbingFinish for the state value
+                            value={typeOfClimbValue}
+                        >
+                            <option value="placeholder" disabled>What type of Climb?</option>
+                            <option value="Top Rope">Top Rope</option>
+                            <option value="Boulder">Boulder</option>
+                            <option value="Trad">Trad</option>
+                            <option value="Lead">Lead</option>
+                        </select>
+                    </div>
+                    <div className="climbingGradeContainer climbSelection">
+                        <label htmlFor='climbingGrade'>Climbing Grade</label>
+                        <select
+                            id="climbingGrade"
+                            name="climbingGrade"
+                            // when a new option is selected, fire the climbingGradeValueChange
+                            onChange={ climbingGradeValueChange }
+                            // set a value of climbingGrade for the state value
+                            value={ climbingGradeValue }
+                        >
+                            <option value="placeholder" disabled>Select the Grade:</option>
+                                {/* adding turnery operators for changing the option of climbing Grade  */}
+                                {
+                                    typeOfClimbValue === "Top Rope" ?       
+                                    climbingTopRope.map((climbNumber, index) => {
+                                        return (
+                                            <ClimbingFormGrade
+                                                chosenGradeClimb = {climbNumber}
+                                                key = {index}
+                                            />
+                                            
+                                        )
+                                    })
+                                    
+                                    : typeOfClimbValue === "Boulder" ?
+                                    climbingBoulder.map((climbNumber, index) => {
                                         return (
                                             <ClimbingFormGrade
                                                 chosenGradeClimb={climbNumber}
@@ -120,43 +114,54 @@ function ClimbingForm( props ) {
 
                                         )
                                     })
-                                : typeOfClimbValue === "Lead" ?
+                                    : typeOfClimbValue === "Trad" ?
                                             climbingTopRope.map((climbNumber, index) => {
-                                        return (
-                                            <ClimbingFormGrade
-                                                chosenGradeClimb={climbNumber}
-                                                key={index}
-                                            />
+                                            return (
+                                                <ClimbingFormGrade
+                                                    chosenGradeClimb={climbNumber}
+                                                    key={index}
+                                                />
 
-                                        )
-                                    })
-                                : null
-                            }
-                            {
-                                typeOfClimbValue === "Boulder" ? "Boulder" : undefined
-                            }
-                    </ select>
-                </div>
+                                            )
+                                        })
+                                    : typeOfClimbValue === "Lead" ?
+                                                climbingTopRope.map((climbNumber, index) => {
+                                            return (
+                                                <ClimbingFormGrade
+                                                    chosenGradeClimb={climbNumber}
+                                                    key={index}
+                                                />
 
-                <div className="typeOfClimbingFinish">
-                    <label htmlFor='climbingFinish'>Type of Finish</label>
-                    <select
-                        id="climbingFinish"
-                        name="climbingFinish"
-                        // when a new option is selected, fire the climbingGradeValueChange
-                        onChange={climbingFinishValueChange}
-                        // set a value of climbingFinish for the state value
-                        value={climbingFinishValue}
-                    >
-                        <option value="placeholder" disabled>What type of Finish?</option>
-                        <option value="onsight">Onsight</option>
-                        <option value="flash">Flash</option>
-                        <option value="redpoint">Redpoint</option>
-                        <option value="attempts">Attempts</option>
-                        <option value="project">Project</option>
-                    </select>
+                                            )
+                                        })
+                                    : null
+                                }
+                                {
+                                    typeOfClimbValue === "Boulder" ? "Boulder" : undefined
+                                }
+                        </ select>
+                    </div>
+
+                    <div className="typeOfClimbingFinish climbSelection">
+                        <label htmlFor='climbingFinish'>Type of Finish</label>
+                        <select
+                            id="climbingFinish"
+                            name="climbingFinish"
+                            // when a new option is selected, fire the climbingGradeValueChange
+                            onChange={climbingFinishValueChange}
+                            // set a value of climbingFinish for the state value
+                            value={climbingFinishValue}
+                        >
+                            <option value="placeholder" disabled>What type of Finish?</option>
+                            <option value="onsight">Onsight</option>
+                            <option value="flash">Flash</option>
+                            <option value="redpoint">Redpoint</option>
+                            <option value="attempts">Attempts</option>
+                            <option value="project">Project</option>
+                        </select>
+                    </div>
                 </div>
-                <button>Submit my Climb!</button>
+                <button className="submitButton">Submit my Climb!</button>
             </form>
         </div>
     )

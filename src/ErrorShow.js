@@ -2,7 +2,11 @@ function ErrorShow() {
 
 
     return (
-        <p>Please Fill in the STUFFF!</p>
+        <div className="wrapper">
+            <div className="errorSign">
+                <p>Please Fill in the STUFFF!</p>
+            </div>
+        </div>
     )
 }
 

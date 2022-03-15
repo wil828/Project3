@@ -1,0 +1,30 @@
+* {
+    font-family: $mainFont;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 125%;
+    background-color: $secondary;
+    color: $primary;
+}
+
+
+img {
+    width: 100%;
+    display: block;
+}
+
+.wrapper {
+    width: 85%;
+    margin: 0 auto;
+}
+
+ul {
+    list-style: none;
+}
+
+input, button {
+    border: none;
+}
