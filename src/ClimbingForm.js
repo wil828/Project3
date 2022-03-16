@@ -79,6 +79,7 @@ function ClimbingForm( props ) {
                             <option value="Trad">Trad</option>
                             <option value="Lead">Lead</option>
                         </select>
+                            
                     </div>
                     <div className="climbingGradeContainer climbSelection">
                         <label htmlFor='climbingGrade'>Climbing Grade</label>

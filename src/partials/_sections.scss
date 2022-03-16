@@ -9,12 +9,13 @@
             width: 100%;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             background-color: $quaternary;
             padding: 10px;
             border-radius: 15px;
             label {
                 display: flex;
+                margin-right: 30px;
                 align-items: center;
             }
             input {
@@ -27,15 +28,22 @@
             width: 100%;
             display: flex;
             flex-wrap: wrap;
+            
 
             .climbSelection {
                 display: flex;
                 flex-wrap: wrap;
+                flex-direction: column;
                 width: 100%;
                 padding: 10px;
                 margin-bottom: 10px;
                 background-color: $quaternary;
                 border-radius: 15px;
+                position: relative;
+                align-items: center;
+                .climbingSelect {
+                    position: relative;
+                }
             }
         }
 
@@ -58,4 +66,39 @@
         font-weight: bold;
         color: $quinary;
     }
+}
+
+// Climbing Entry Styling
+
+.climbingEntryContainer {
+    width: 100%;
+    .wrapper {
+        .eachClimbingEntryContainer {
+            background-color: $quaternary;
+            border-radius: 20px;
+            margin: 20px 0;
+            .topBar {
+                // border: solid 2px red;
+                padding: 10px 15px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .closeButton {
+                    color: $quinary;
+                }
+            }
+            h3 {
+                margin: 10px;
+                text-align: center;
+            }
+            p {
+                margin-bottom: 5px;
+            }
+            .textContainer {
+                padding: 0 15px 10px 15px;
+            }
+
+        }
+    }
+
 }

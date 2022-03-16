@@ -9,6 +9,7 @@ import Header from './Header';
 import ClimbingForm from './ClimbingForm';
 import ClimbingEntry from './ClimbingEntry';
 import ErrorShow from './ErrorShow';
+import Footer from './Footer';
 
 // access our database, import the corresponding firebase modules
 import { getDatabase, ref, onValue, push, remove } from 'firebase/database';
@@ -39,9 +40,8 @@ function App() {
     });
   }, []);
   
-  // console.log(climbingLog);
   // console.log(climbingLog["name"]["finish"])
-  console.log(climbingLog)
+  // console.log(climbingLog)
 
   const storeClimbData = function(event, chosenDate, chosenTypeOfClimb, chosenClimbingGrade, chosenClimbingFinish) {
     event.preventDefault();
@@ -89,27 +89,35 @@ function App() {
         noInfo === true
           ?
           <ErrorShow
+            
           />
           : null
       }
-      <ul>
-        { 
-          climbingLog.map((oneClimb) => {
-            return (
-              <ClimbingEntry 
-                key = {oneClimb.key}
-                chosenDate = {oneClimb.name.date}
-                chosenTypeOfClimb = {oneClimb.name.type}
-                chosenGrade = {oneClimb.name.grade}
-                chosenFinish={oneClimb.name.finish}
+      <section className="climbingEntryContainer">
+        <div className="wrapper">
+          <ul>
+            { 
+              climbingLog.map((oneClimb) => {
+                return (
+                  <ClimbingEntry 
+                    key = {oneClimb.key}
+                    chosenDate = {oneClimb.name.date}
+                    chosenTypeOfClimb = {oneClimb.name.type}
+                    chosenGrade = {oneClimb.name.grade}
+                    chosenFinish={oneClimb.name.finish}
 
-                removeEntry={ () => {handleRemove(oneClimb.key)}}
-              />
-            )
-          })
-        }
+                    removeEntry={ () => {handleRemove(oneClimb.key)}}
+                  />
+                )
+              })
+            }
 
-      </ul>
+          </ul>
+        </div>
+      </section>
+
+      <Footer />
+
     </div>
   );
 }
