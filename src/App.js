@@ -61,7 +61,7 @@ function App() {
     }
 
     // if statement to only push if all selects are full
-    if ((chosenDate == "") || (chosenTypeOfClimb == "placeholder") || (chosenClimbingGrade == "placeholder") || (chosenClimbingFinish == "placeholder")) {
+    if ((chosenDate === "") || (chosenTypeOfClimb === "placeholder") || (chosenClimbingGrade === "placeholder") || (chosenClimbingFinish === "placeholder")) {
       setNoInfo(true);
       setSingleClimbingLog(climbingList);
       setPhoto('./climbingSheepError.png');
