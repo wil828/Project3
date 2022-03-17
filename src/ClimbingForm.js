@@ -5,7 +5,6 @@ import ClimbingFormGrade from './ClimbingFormGrade';
 
 function ClimbingForm( props ) {
 
-    // console.log(props);
 
     // initialize state to track changing value of dropdown
     const [dateValue, setDateValue] = useState('');
@@ -16,7 +15,6 @@ function ClimbingForm( props ) {
     const dateChange = function(event) {
         // take the value of the user's selected input for the dateValue and save it in state
         setDateValue(event.target.value);
-        console.log(event.target.value);
     }
     
     const typeOfClimbValueChange = function(event) {
@@ -154,11 +152,11 @@ function ClimbingForm( props ) {
                             value={climbingFinishValue}
                         >
                             <option value="placeholder" disabled>What type of Finish?</option>
-                            <option value="onsight">Onsight</option>
-                            <option value="flash">Flash</option>
-                            <option value="redpoint">Redpoint</option>
-                            <option value="attempts">Attempts</option>
-                            <option value="project">Project</option>
+                            <option value="Onsight">Onsight</option>
+                            <option value="Flash">Flash</option>
+                            <option value="Redpoint">Redpoint</option>
+                            <option value="Attempts">Attempts</option>
+                            <option value="Project">Project</option>
                         </select>
                     </div>
                 </div>

@@ -9,7 +9,7 @@ function ClimbingEntry(props) {
             <div className="topBar">
                 <p className="entryDate">{props.chosenDate}</p>
                 <button 
-                    onClick={props.removeEntry}
+                    onClick={() => props.removeEntry(props.testRemove)}
                     className="closeButton"
                 >
                     <FontAwesomeIcon icon={faTimes} />

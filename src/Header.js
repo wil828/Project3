@@ -1,5 +1,5 @@
 
-function Header() {
+function Header(props) {
 
     return(
         <header>
@@ -13,7 +13,7 @@ function Header() {
                     </div>
                 </div>
                 <div className="imgContainer">
-                    <img src='./climbingSheep.png' alt="" />
+                    <img src={props.photoSource} alt="A climbing sheep" />
                 </div>
             </div>
         </header>

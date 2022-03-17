@@ -73,12 +73,20 @@
         font-weight: bold;
         color: $quinary;
     }
+    li {
+        font-weight: bold;
+        color: $quinary;
+        font-size: 0.9rem;
+        font-style: italic;
+        padding: 3px;
+    }
 }
 
 // Climbing Entry Styling
 
 .climbingEntryContainer {
     width: 100%;
+    position: relative;
     .wrapper {
         .eachClimbingEntryContainer {
             background-color: $quaternary;
@@ -107,5 +115,46 @@
 
         }
     }
+
+}
+
+// Delete Entry styling
+.deletePanel {
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, .75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .box {
+        background-color: $secondary;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        padding: 60px;
+        border-radius: 30px;
+        .close {
+            color: $quinary;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+        p {
+            padding: 10px;
+        }
+        .delete {
+            padding: 10px;
+            background-color: $tertiary;
+            font-weight: bold;
+            color: $secondary;
+            border-radius: 20px;
+        }
+    }
+
 
 }

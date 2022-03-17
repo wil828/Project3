@@ -9,6 +9,7 @@ import Header from './Header';
 import ClimbingForm from './ClimbingForm';
 import ClimbingEntry from './ClimbingEntry';
 import ErrorShow from './ErrorShow';
+import DeleteEntry from './DeleteEntry';
 import Footer from './Footer';
 
 // access our database, import the corresponding firebase modules
@@ -16,16 +17,20 @@ import { getDatabase, ref, onValue, push, remove } from 'firebase/database';
 
 
 function App() {
+  // creating useState variables
   const [ climbingLog, setClimbingLog ] = useState([]);
-  const [noInfo, setNoInfo] = useState(false);
+  const [ singleClimbingLog, setSingleClimbingLog ] = useState([]);
+  const [ noInfo, setNoInfo ] = useState(false);
+  const [ singleKey, setSingleKey] = useState("");
+  const [ deleteClimbEntry, setDeleteClimbEntry ] = useState(false);
+  const [photo, setPhoto] = useState('./climbingSheep.png');
 
+  // useEffect to save a state variable of climbingLog
   useEffect(() => {
     const database = getDatabase(firebase);
     const dbRef = ref(database);
-    // console.log(dbRef);
 
     onValue(dbRef, (response) => {
-      // console.log(response.val());
       const newState = [];
       const data = response.val();
       for (let propertyName in data) {
@@ -39,19 +44,15 @@ function App() {
       setClimbingLog(newState);
     });
   }, []);
-  
-  // console.log(climbingLog["name"]["finish"])
-  // console.log(climbingLog)
 
+  // function to store the specific climbing data to push to firebase
   const storeClimbData = function(event, chosenDate, chosenTypeOfClimb, chosenClimbingGrade, chosenClimbingFinish) {
     event.preventDefault();
     const database = getDatabase(firebase);
     const dbRef = ref(database);
 
-    // validation for input toi check if data has been entered in
-
     
-    
+    // variable to create the list
     const climbingList = {
       date: chosenDate,
       type: chosenTypeOfClimb,
@@ -61,26 +62,43 @@ function App() {
 
     // if statement to only push if all selects are full
     if ((chosenDate == "") || (chosenTypeOfClimb == "placeholder") || (chosenClimbingGrade == "placeholder") || (chosenClimbingFinish == "placeholder")) {
-
       setNoInfo(true);
+      setSingleClimbingLog(climbingList);
+      setPhoto('./climbingSheepError.png');
 
     } else {
       setNoInfo(false);
       push(dbRef, climbingList);
+      setPhoto('./climbingSheepSuccess.png');
     }
   }
 
-  const handleRemove = (ClimbingEntryId) => {
-
-    
+  //  function to remove the chosen entry container
+  const handleRemove = () => {   
     const database = getDatabase(firebase);
-    const dbRef = ref(database, `/${ClimbingEntryId}`);
+    const dbRef = ref(database, `/${singleKey}`);
+    setDeleteClimbEntry(false);
     remove(dbRef);
+  }
+
+  // function to give the key value of the container being deleted to state SingleKey
+  const handleDelete = (test) => {
+    setSingleKey(test);
+    setDeleteClimbEntry(true);
+    setPhoto('./climbingSheep.png');
+  }
+
+  // function to close the deleteEntry when x button is clicked
+  const close = () => {
+    setDeleteClimbEntry(false);
+    setPhoto('./climbingSheep.png');
   }
 
   return (
     <div>
-      <Header />
+      <Header 
+        photoSource={photo}
+      />
       <section className="climbFormSection">
         <div className="wrapper">
           <ClimbingForm submitClimbingForm={storeClimbData}/>
@@ -90,7 +108,7 @@ function App() {
         noInfo === true
           ?
           <ErrorShow
-            
+            errorChoice={singleClimbingLog}
           />
           : null
       }
@@ -107,7 +125,7 @@ function App() {
                     chosenGrade = {oneClimb.name.grade}
                     chosenFinish={oneClimb.name.finish}
 
-                    removeEntry={ () => {handleRemove(oneClimb.key)}}
+                    removeEntry={ () => {handleDelete(oneClimb.key)}}
                   />
                 )
               })
@@ -115,6 +133,16 @@ function App() {
 
           </ul>
         </div>
+        {
+          deleteClimbEntry === true
+            ?
+            <DeleteEntry
+              removeTheEntry={handleRemove}
+              closeIt={close}
+            />
+            : null
+        }
+        
       </section>
 
       <Footer />
