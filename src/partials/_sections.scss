@@ -1,59 +1,66 @@
 // styling of climbingForm Section
 .climbFormSection {
     margin-bottom: 20px;
+    
     .climbingForm {
         h2 {
             margin-bottom: 15px;
+            position: relative;
         }
-        .dateArea {
-            width: 100%;
+        form {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            background-color: $quaternary;
-            padding: 10px;
-            border-radius: 15px;
-            label {
-                display: flex;
-                margin-right: 30px;
-                align-items: center;
-            }
-            input {
-                background-color: $quaternary;
-            }
-        }
-
-        .selectionArea {
-            margin: 10px 0 20px 0;
-            width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            
-
-            .climbSelection {
-                display: flex;
-                flex-wrap: wrap;
-                flex-direction: column;
+            .dateArea {
                 width: 100%;
-                padding: 10px;
-                margin-bottom: 10px;
-                background-color: $quaternary;
-                border-radius: 15px;
-                position: relative;
+                display: flex;
                 align-items: center;
-                .climbingSelect {
-                    position: relative;
+                justify-content: center;
+                background-color: $quaternary;
+                padding: 10px;
+                border-radius: 15px;
+                label {
+                    display: flex;
+                    margin-right: 30px;
+                    align-items: center;
+                }
+                input {
+                    background-color: $quaternary;
                 }
             }
-        }
-
-        button {
-            background-color: $tertiary;
-            color: white;
-            font-weight: bold;
-            width: 100%;
-            padding: 10px;
-            border-radius: 20px;
+    
+            .selectionArea {
+                margin: 10px 0 20px 0;
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                
+    
+                .climbSelection {
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-direction: column;
+                    width: 100%;
+                    padding: 10px;
+                    margin-bottom: 10px;
+                    background-color: $quaternary;
+                    border-radius: 15px;
+                    position: relative;
+                    align-items: center;
+                    .climbingSelect {
+                        position: relative;
+                    }
+                }
+            }
+    
+            button {
+                background-color: $tertiary;
+                color: white;
+                font-weight: bold;
+                width: 100%;
+                padding: 10px;
+                border-radius: 20px;
+            }
         }
     }
 }

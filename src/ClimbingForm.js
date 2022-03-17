@@ -47,8 +47,8 @@ function ClimbingForm( props ) {
 
     return (
         <div className="climbingForm">
+            <h2>Log a Climb!</h2>
             <form action="" onSubmit={ handleUserSelect } >
-                <h2>Log a Climb!</h2>
                 <div className="dateArea">
                     <label htmlFor='date' className='date'>
                         Date: 

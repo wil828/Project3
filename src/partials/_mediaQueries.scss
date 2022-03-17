@@ -1,0 +1,67 @@
+@media (min-width: 800px) {
+   .climbingEntryContainer {
+        width: 100%;
+        .wrapper {
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                .eachClimbingEntryContainer {
+                    margin: 10px 0;
+                    width: 48%;
+                }
+            }
+        }
+
+    }
+}
+
+@media (min-width: 1200px) {
+    .wrapper {
+        max-width: 1050px;
+    }
+    .climbFormSection {
+        
+        .climbingForm {
+            
+            form {
+                 
+                .selectionArea {
+                    flex-direction: row;
+                    justify-content: space-between;
+        
+                    .climbSelection {
+                        width: 32%;
+                    }
+                }
+        
+                button {
+                    background-color: $tertiary;
+                    color: white;
+                    font-weight: bold;
+                    width: 100%;
+                    padding: 10px;
+                    border-radius: 20px;
+                }
+            }
+        }
+    }
+
+   .climbingEntryContainer {
+        width: 100%;
+        .wrapper {
+            width: calc(90% + 30px);
+            max-width: 1080px;
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                .eachClimbingEntryContainer {
+                    width: calc(33.33% - 30px);
+                    margin: 15px;
+                }
+            }
+        }
+
+    }
+}

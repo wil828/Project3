@@ -63,7 +63,6 @@ function App() {
     if ((chosenDate == "") || (chosenTypeOfClimb == "placeholder") || (chosenClimbingGrade == "placeholder") || (chosenClimbingFinish == "placeholder")) {
 
       setNoInfo(true);
-      console.log(noInfo);
 
     } else {
       setNoInfo(false);
@@ -72,6 +71,8 @@ function App() {
   }
 
   const handleRemove = (ClimbingEntryId) => {
+
+    
     const database = getDatabase(firebase);
     const dbRef = ref(database, `/${ClimbingEntryId}`);
     remove(dbRef);
