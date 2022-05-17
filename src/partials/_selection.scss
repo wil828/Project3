@@ -8,6 +8,9 @@ select {
     padding: 10px 10px;
     color: $secondary;
     text-align: center;
+    &:hover {
+        background: rgb(107, 106, 106);
+    }
     option {
         text-align: center;
         font-size: 0.8rem;

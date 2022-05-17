@@ -61,6 +61,9 @@
                 width: 100%;
                 padding: 10px;
                 border-radius: 20px;
+                &:hover {
+                    background-color: #9ab38f;
+                }
             }
         }
     }
@@ -101,6 +104,9 @@
                 justify-content: space-between;
                 .closeButton {
                     color: $quinary;
+                    &:hover {
+                        color: #ce5e5e;
+                    }
                 }
             }
             h3 {
@@ -144,6 +150,10 @@
             position: absolute;
             top: 20px;
             right: 30px;
+
+            &:hover {
+                color: #ce5e5e;
+            }
         }
         p {
             padding: 10px;
@@ -154,6 +164,9 @@
             font-weight: bold;
             color: $secondary;
             border-radius: 20px;
+            &:hover {
+                background-color: #9ab38f;
+            }
         }
     }
 
